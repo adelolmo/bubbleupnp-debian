@@ -1,0 +1,38 @@
+#!/bin/sh -e
+
+usage(){
+    echo "Usage: $(basename $0) (amd64|i386|arm64|armhf) version"
+    exit 1
+}
+
+#if [ -z "$1" ] || [ -z "$2" ]; then
+#    usage
+#fi
+
+BUILD=build
+TMP=${BUILD}/tmp
+APP_HOME=opt/bubbleupnp
+architecture=$1
+version=$2
+
+rm -Rf ${BUILD}
+mkdir -p ${BUILD}/release ${TMP}
+
+echo "* Building version $version..."
+mkdir -p ${TMP}/${APP_HOME}
+wget http://bubblesoftapps.com/bubbleupnpserver/core/BubbleUPnPServer.jar -O ${TMP}/${APP_HOME}/BubbleUPnPServer.jar
+wget https://bubblesoftapps.com/bubbleupnpserver/BubbleUPnPServer-distrib.zip -O ${TMP}/${APP_HOME}/bubbleupnpserver.zip
+unzip ${TMP}/${APP_HOME}/bubbleupnpserver.zip -d ${TMP}/${APP_HOME}
+rm ${TMP}/${APP_HOME}/launch.bat
+mv ${TMP}/${APP_HOME}/launch.sh ${TMP}/${APP_HOME}/bubbleupnp
+chmod +x ${TMP}/${APP_HOME}/bubbleupnp
+rm -f ${TMP}/${APP_HOME}/bubbleupnpserver.zip
+
+echo "* Create debian package ..."
+cp -R deb/* ${TMP}
+chmod 0555 ${TMP}/DEBIAN/p*
+
+fakeroot dpkg-deb -b -z9 ${TMP} ${BUILD}/release
+
+echo done
+

@@ -1,0 +1,29 @@
+Package: bubbleupnpserver
+Version: 0.9-5~ado1
+Architecture: all
+Maintainer: bubbleguuum <bubbleguuum@free.fr>
+Installed-Size: 56
+Depends: init-system-helpers (>= 1.18~), lsb-base (>= 4.1+Debian11ubuntu7), ffmpeg
+Section: net
+Priority: optional
+Homepage: https://www.bubblesoftapps.com/bubbleupnpserver
+Description: BubbleUPnP Server
+ BubbleUPnP Server provides new services, many of them running on top of your
+ existing UPnP/DLNA devices:
+ .
+ - make various media formats not natively supported by Chromecast playable
+ with transcoding. Works in tandem with Android BubbleUPnP
+ - secure Internet access to your UPnP/DLNA Media Servers content with
+ Android BubbleUPnP and foobar2000:
+   - stream and download your music, video, photos with your Android
+   device from a mobile or WiFi connection with optional transcoding to reduce
+   bandwidth.
+   - no need to sync, to upload to the cloud, to register to an online
+ service
+ - create OpenHome Media Renderers from any UPnP AV renderer (provides
+ on-device playlist, multiple Control Point access to the same renderer)
+ - fix issues of UPnP/DLNA Media Servers (discovery issues, broken data,
+ add some audio DLNA compliance) by creating a proxy Media Server
+ - access your UPnP/DLNA Media Servers across different networks
+ .
+ BUBBLEUPNP SERVER IS NOT AN UPNP AV MEDIA SERVER.

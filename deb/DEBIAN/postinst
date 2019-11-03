@@ -1,0 +1,29 @@
+#!/bin/sh -e
+
+APP_HOME=/var/opt/bubbleupnp
+USER=bubbleupnp
+
+case "$1" in
+    configure|reconfigure)
+        exists=$( cat /etc/passwd | grep $USER | sed -e 's/:.*//g' )
+        if [ "$exists" = "" ]; then
+            echo "Creating \`$USER' user with home directory \`$APP_HOME' ..."
+            adduser --system --gecos "aMule Service" --disabled-password --group --home $APP_HOME $USER > /dev/null 2>&1
+
+            mkdir -p $APP_HOME
+            chown $USER.$USER -R $APP_HOME
+        fi
+
+        systemctl daemon-reload
+        systemctl enable bubbleupnp
+        systemctl restart bubbleupnp
+    ;;
+
+    abort-upgrade|abort-remove|abort-deconfigure)
+    ;;
+
+    *)
+        echo "postinst called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
+esac

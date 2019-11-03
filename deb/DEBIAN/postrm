@@ -1,0 +1,21 @@
+#!/bin/sh -e
+
+case $1 in
+    purge)
+        systemctl disable bubbleupnp
+        systemctl daemon-reload
+
+        rm -rf /var/opt/bubbleupnp
+
+        echo "Removing \`bubbleupnp' user ..."
+        userdel -r bubbleupnp > /dev/null 2>&1
+
+        ;;
+    remove)
+        systemctl daemon-reload
+        ;;
+    upgrade)
+        ;;
+    *)
+        ;;
+esac

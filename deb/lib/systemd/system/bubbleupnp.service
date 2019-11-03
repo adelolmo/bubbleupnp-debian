@@ -1,0 +1,16 @@
+[Unit]
+Description=BubbleUPnP Server
+Requires=network-online.target
+After=syslog.target network-online.target
+
+[Service]
+Type=simple
+User=bubbleupnp
+Group=bubbleupnp
+Restart=on-failure
+ExecStart=/opt/bubbleupnp/bubbleupnp -dataDir /var/opt/bubbleupnp -httpPort 58050 -httpsPort 58051 -ffmpegDir /usr/bin
+StandardOutput=syslog+console
+SyslogIdentifier=bubbleupnp
+
+[Install]
+WantedBy=multi-user.target
