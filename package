@@ -1,19 +1,18 @@
 #!/bin/sh -e
 
 usage(){
-    echo "Usage: $(basename $0) (amd64|i386|arm64|armhf) version"
+    echo "Usage: $(basename "$0") version"
     exit 1
 }
 
-#if [ -z "$1" ] || [ -z "$2" ]; then
-#    usage
-#fi
+if [ -z "$1" ]; then
+    usage
+fi
 
 BUILD=build
 TMP=${BUILD}/tmp
 APP_HOME=opt/bubbleupnp
-architecture=$1
-version=$2
+version=$1
 
 rm -Rf ${BUILD}
 mkdir -p ${BUILD}/release ${TMP}
@@ -34,5 +33,4 @@ chmod 0555 ${TMP}/DEBIAN/p*
 
 fakeroot dpkg-deb -b -z9 ${TMP} ${BUILD}/release
 
-echo done
-
+echo "done"

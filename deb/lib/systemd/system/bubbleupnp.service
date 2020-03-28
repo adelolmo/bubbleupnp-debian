@@ -8,7 +8,7 @@ Type=simple
 User=bubbleupnp
 Group=bubbleupnp
 Restart=on-failure
-ExecStart=/opt/bubbleupnp/bubbleupnp -dataDir /var/opt/bubbleupnp -httpPort 58050 -httpsPort 58051 -ffmpegDir /usr/bin
+ExecStart=/opt/bubbleupnp/bubbleupnp -dataDir /var/opt/bubbleupnp -httpPort 58050 -httpsPort 58051 -ffmpegDir /opt/bubbleupnp/ffmpeg
 StandardOutput=syslog+console
 SyslogIdentifier=bubbleupnp
 

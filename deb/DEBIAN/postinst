@@ -14,6 +14,9 @@ case "$1" in
             chown $USER.$USER -R $APP_HOME
         fi
 
+        ln -s /opt/bubbleupnp/ffmpeg/lib/libx264.so.152 /usr/lib/arm-linux-gnueabihf/libx264.so.152
+        ln -s /opt/bubbleupnp/ffmpeg/lib/libx265.so.146 /usr/lib/arm-linux-gnueabihf/libx265.so.146
+
         systemctl daemon-reload
         systemctl enable bubbleupnp
         systemctl restart bubbleupnp

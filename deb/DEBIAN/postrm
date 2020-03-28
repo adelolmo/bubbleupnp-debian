@@ -12,6 +12,8 @@ case $1 in
 
         ;;
     remove)
+		rm /usr/lib/arm-linux-gnueabihf/libx264.so.152
+		rm /usr/lib/arm-linux-gnueabihf/libx265.so.146
         systemctl daemon-reload
         ;;
     upgrade)
