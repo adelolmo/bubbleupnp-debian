@@ -19,7 +19,7 @@ mkdir -p ${BUILD}/release ${TMP}
 
 echo "* Building version $version..."
 mkdir -p ${TMP}/${APP_HOME}
-wget http://bubblesoftapps.com/bubbleupnpserver/core/BubbleUPnPServer.jar -O ${TMP}/${APP_HOME}/BubbleUPnPServer.jar
+wget https://bubblesoftapps.com/bubbleupnpserver/core/BubbleUPnPServer.jar -O ${TMP}/${APP_HOME}/BubbleUPnPServer.jar
 wget https://bubblesoftapps.com/bubbleupnpserver/BubbleUPnPServer-distrib.zip -O ${TMP}/${APP_HOME}/bubbleupnpserver.zip
 unzip ${TMP}/${APP_HOME}/bubbleupnpserver.zip -d ${TMP}/${APP_HOME}
 rm ${TMP}/${APP_HOME}/launch.bat
